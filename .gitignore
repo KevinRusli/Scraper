@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+
+# Local data: the dedup database and scraped results
+leads.db
+*.db
+results/
+all_leads.csv
+.env
