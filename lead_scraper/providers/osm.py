@@ -116,9 +116,11 @@ class OSMProvider(Provider):
             "POST",
             self.overpass_urls,
             data={"data": overpass_query},
-            timeout=self.timeout + 30,
-            attempts=2,
-            backoff=10,
+            # Short connect timeout so an unresponsive mirror fails fast and the
+            # next one is tried; the read timeout covers slow queries.
+            timeout=(20, self.timeout + 30),
+            attempts=3,
+            backoff=5,
         )
         payload = resp.json()
         if payload.get("remark") and not payload.get("elements"):

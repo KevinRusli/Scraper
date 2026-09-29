@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import os
 import time
-from typing import Iterable, Optional
+from typing import Iterable, Optional, Tuple
 
 import requests
 
@@ -33,7 +33,7 @@ def request_with_retry(
     *,
     attempts: int = 3,
     backoff: float = 2.0,
-    timeout: float = 60,
+    timeout: float | Tuple[float, float] = 60,
     sleep=time.sleep,
     **kwargs,
 ) -> requests.Response:
