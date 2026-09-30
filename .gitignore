@@ -10,3 +10,7 @@ leads.db
 results/
 all_leads.csv
 .env
+
+# Lead spreadsheets contain contact data; keep them local
+*.xlsx
+*.xls
